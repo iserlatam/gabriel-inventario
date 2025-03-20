@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductoResource\Pages;
 use App\Filament\Resources\ProductoResource\RelationManagers;
 use App\Models\Producto;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,7 +13,10 @@ use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Date;
 
 class ProductoResource extends Resource
 {
@@ -91,7 +95,7 @@ class ProductoResource extends Resource
                                 ->numeric()
                                 ->default(null),
                             Forms\Components\TextInput::make('precio_maqsello_iva')
-                                ->label('PRECIO CON IVA VENDEDOR')
+                                ->label('PRECIO CON IVA FINAL')
                                 ->helperText('MAQUINA Y SELLO')
                                 ->numeric()
                                 ->default(null),
